@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>cgmm3-govern | Governance infrastructure for agentic systems</title>
+    <meta
+      name="description"
+      content="cgmm3-govern is a governance layer for agentic and high-stakes AI systems, with receipts, audit trails, contestability, and MCP-ready deployment."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">cgmm3-govern</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#story">Why it exists</a>
+          <a href="#demo">Demo</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#build">How it was built</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero section-reveal">
+          <div class="hero-copy">
+            <p class="eyebrow">Governance infrastructure for agentic systems</p>
+            <h1>The layer that decides whether an AI action deserves release.</h1>
+            <p class="hero-lede">
+              cgmm3-govern sits beside an agent, API, or workflow runner and
+              checks proposed actions before they are shown, executed, or logged
+              as trusted outputs. It turns governance into a product surface:
+              explicit policy gates, machine-readable receipts, audit persistence,
+              and a formal contest path.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#demo">Run the browser demo</a>
+              <a class="button button-secondary" href="#architecture">See the control flow</a>
+              <a class="button button-ghost" href="https://github.com/cgmm3-causal/cgmm3-mvp" target="_blank" rel="noreferrer">View repository</a>
+            </div>
+            <ul class="hero-chips" aria-label="Product highlights">
+              <li>PASS / WARN / BLOCK gates</li>
+              <li>Machine-readable receipts</li>
+              <li>MCP sidecar deployment</li>
+              <li>Contestability and review</li>
+            </ul>
+          </div>
+
+          <aside class="hero-panel" aria-label="Governance receipt preview">
+            <div class="signal-strip">
+              <span class="signal signal-pass">PASS</span>
+              <span class="signal signal-warn">WARN</span>
+              <span class="signal signal-block">BLOCK</span>
+            </div>
+            <div class="receipt-preview">
+              <div class="receipt-header">
+                <p>Receipt preview</p>
+                <span>Pre-release control</span>
+              </div>
+              <div class="receipt-row">
+                <span>Subject</span>
+                <strong>buyer-case-001</strong>
+              </div>
+              <div class="receipt-row">
+                <span>Decision surface</span>
+                <strong>Agent host + governance sidecar</strong>
+              </div>
+              <div class="receipt-row">
+                <span>Gate status</span>
+                <strong class="gate-pill gate-pill-warn">WARN</strong>
+              </div>
+              <div class="receipt-row">
+                <span>Visible action</span>
+                <strong>Route to nurse outreach within 24 hours.</strong>
+              </div>
+              <div class="receipt-checks">
+                <div>
+                  <small>Overlap</small>
+                  <span>Within support</span>
+                </div>
+                <div>
+                  <small>Fairness</small>
+                  <span>Flagged for payer gap review</span>
+                </div>
+                <div>
+                  <small>Audit log</small>
+                  <span>Persisted with receipt ID</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="proof-band section-reveal" aria-label="Key proof points">
+          <article>
+            <strong>1</strong>
+            <span>portable governance layer</span>
+          </article>
+          <article>
+            <strong>3</strong>
+            <span>gate states: PASS, WARN, BLOCK</span>
+          </article>
+          <article>
+            <strong>7</strong>
+            <span>MCP tools in the sidecar surface</span>
+          </article>
+          <article>
+            <strong>0</strong>
+            <span>backend required for this GitHub Pages demo</span>
+          </article>
+        </section>
+
+        <section id="story" class="story section-reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Why it exists</p>
+            <h2>The product is the governance layer, not the benchmark.</h2>
+          </div>
+          <div class="story-grid">
+            <article class="story-card">
+              <h3>What most agent stacks already do</h3>
+              <p>
+                Planning, prompts, tool orchestration, UX, and action generation.
+                They can decide what they want to do, but they still need a clean
+                control boundary before those actions become trusted outputs.
+              </p>
+            </article>
+            <article class="story-card story-card-emphasis">
+              <h3>What cgmm3-govern adds</h3>
+              <p>
+                A reusable control plane for explicit policy checks, fairness and
+                uncertainty gates, receipts, audit trails, and reviewer workflows.
+                The host stays flexible. The governance contract stays stable.
+              </p>
+            </article>
+            <article class="story-card">
+              <h3>Why the repo matters</h3>
+              <p>
+                The surrounding research pipeline proves this is not abstract policy
+                theater. It shows the governance layer sitting on top of real
+                treatment-effect outputs, overlap checks, subgroup gaps, and
+                deployment gates.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="demo" class="demo section-reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Interactive demo</p>
+            <h2>A browser simulation of the governed agent flow.</h2>
+            <p>
+              This static demo mirrors the repo's buyer-facing heuristics so the
+              product can be shown on GitHub Pages. The live repository also ships
+              a FastAPI demo, terminal CLI, and MCP sidecar.
+            </p>
+          </div>
+
+          <div class="demo-grid">
+            <section class="demo-controls panel">
+              <div class="panel-header">
+                <h3>Case builder</h3>
+                <p>Load a preset or shape your own case.</p>
+              </div>
+
+              <div class="preset-row" role="group" aria-label="Demo presets">
+                <button class="preset-button is-active" data-preset="balanced" type="button">Balanced outreach</button>
+                <button class="preset-button" data-preset="warn" type="button">Review-needed case</button>
+                <button class="preset-button" data-preset="block" type="button">Hard block case</button>
+              </div>
+
+              <div class="field-group">
+                <label for="subjectId">Subject ID</label>
+                <input id="subjectId" name="subjectId" type="text" value="buyer-case-001" />
+              </div>
+
+              <div class="field-group range-group">
+                <label for="symptomBurden">Symptom burden <span id="symptomBurdenOutput">0.62</span></label>
+                <input id="symptomBurden" name="symptomBurden" type="range" min="0" max="1" step="0.01" value="0.62" />
+              </div>
+
+              <div class="field-group range-group">
+                <label for="adherenceRisk">Adherence risk <span id="adherenceRiskOutput">0.49</span></label>
+                <input id="adherenceRisk" name="adherenceRisk" type="range" min="0" max="1" step="0.01" value="0.49" />
+              </div>
+
+              <div class="field-group range-group">
+                <label for="accessRisk">Access risk <span id="accessRiskOutput">0.38</span></label>
+                <input id="accessRisk" name="accessRisk" type="range" min="0" max="1" step="0.01" value="0.38" />
+              </div>
+
+              <div class="field-group range-group">
+                <label for="careGapDays">Care gap days <span id="careGapDaysOutput">24</span></label>
+                <input id="careGapDays" name="careGapDays" type="range" min="0" max="120" step="1" value="24" />
+              </div>
+
+              <div class="control-grid-two">
+                <div class="field-group">
+                  <label for="ageGroup">Age group</label>
+                  <select id="ageGroup" name="ageGroup">
+                    <option value="pediatric">Pediatric</option>
+                    <option value="adult" selected>Adult</option>
+                    <option value="senior">Senior</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="payerType">Payer type</label>
+                  <select id="payerType" name="payerType">
+                    <option value="commercial" selected>Commercial</option>
+                    <option value="medicaid">Medicaid</option>
+                    <option value="uninsured">Uninsured</option>
+                  </select>
+                </div>
+              </div>
+
+              <label class="toggle-row" for="recentEdVisit">
+                <input id="recentEdVisit" name="recentEdVisit" type="checkbox" />
+                <span>Recent ED visit</span>
+              </label>
+
+              <div class="demo-actions">
+                <button id="generateDecision" class="button button-primary" type="button">Generate governed decision</button>
+                <button id="openContest" class="button button-secondary" type="button">Open contest</button>
+                <button id="resolveContest" class="button button-ghost" type="button">Resolve latest contest</button>
+              </div>
+            </section>
+
+            <section class="demo-output panel">
+              <div class="panel-header panel-header-spread">
+                <div>
+                  <h3>Governance result</h3>
+                  <p>Decision, checks, receipt, and review trail.</p>
+                </div>
+                <div id="gateBadge" class="gate-pill gate-pill-pass">PASS</div>
+              </div>
+
+              <div class="result-banner" id="resultBanner">
+                <h4 id="resultHeadline">Proceed with standard follow-up and a 14-day reassessment.</h4>
+                <p id="resultCopy">The action is visible because governance found no blocking conditions.</p>
+              </div>
+
+              <div class="metric-grid">
+                <article class="metric-card">
+                  <span>Score</span>
+                  <strong id="scoreMetric">0.48</strong>
+                </article>
+                <article class="metric-card">
+                  <span>Propensity</span>
+                  <strong id="propensityMetric">0.46</strong>
+                </article>
+                <article class="metric-card">
+                  <span>CI width</span>
+                  <strong id="ciMetric">0.31</strong>
+                </article>
+                <article class="metric-card">
+                  <span>Open contests</span>
+                  <strong id="contestMetric">0</strong>
+                </article>
+              </div>
+
+              <div class="output-stack">
+                <div>
+                  <div class="stack-header">
+                    <h4>Checks</h4>
+                    <span id="checksCaption">4 checks passed</span>
+                  </div>
+                  <ul id="checksList" class="checks-list"></ul>
+                </div>
+
+                <div>
+                  <div class="stack-header">
+                    <h4>Structured receipt</h4>
+                    <span>Machine-readable by design</span>
+                  </div>
+                  <pre id="receiptJson" class="receipt-json"></pre>
+                </div>
+
+                <div>
+                  <div class="stack-header">
+                    <h4>Audit and review trail</h4>
+                    <span>Latest actions in this browser session</span>
+                  </div>
+                  <div id="auditTrail" class="audit-trail"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="architecture" class="architecture section-reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Architecture</p>
+            <h2>Keep the host flexible. Keep the governance contract stable.</h2>
+          </div>
+
+          <div class="flow-strip" aria-label="Architecture flow">
+            <article class="flow-card">
+              <span>1</span>
+              <h3>Agent host proposes an action</h3>
+              <p>The host owns planning, UX, and orchestration.</p>
+            </article>
+            <article class="flow-card">
+              <span>2</span>
+              <h3>cgmm3-govern evaluates release safety</h3>
+              <p>Fairness, uncertainty, overlap, and policy rules are checked before release.</p>
+            </article>
+            <article class="flow-card">
+              <span>3</span>
+              <h3>A receipt is written</h3>
+              <p>Every governed decision gets a machine-readable record tied to a receipt ID.</p>
+            </article>
+            <article class="flow-card">
+              <span>4</span>
+              <h3>Reviewers can contest and resolve</h3>
+              <p>Impacted users and operators get an explicit challenge path instead of transcript hunting.</p>
+            </article>
+          </div>
+
+          <div class="surface-grid">
+            <article class="surface-card">
+              <h3>SDK</h3>
+              <p>Embed governance directly inside Python services and internal workflows.</p>
+            </article>
+            <article class="surface-card">
+              <h3>FastAPI</h3>
+              <p>Expose decisions, policies, and contests through an API surface for buyer demos and ops tools.</p>
+            </article>
+            <article class="surface-card">
+              <h3>MCP sidecar</h3>
+              <p>Attach governance beside an agent host through a sellable, portable boundary.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Audit store</h3>
+              <p>Persist receipts locally with SQLite today, then graduate to operational backends later.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="build" class="build section-reveal">
+          <div class="section-heading">
+            <p class="eyebrow">How it was built</p>
+            <h2>One repo, two layers: evidence and product.</h2>
+          </div>
+
+          <div class="build-grid">
+            <article class="build-card">
+              <h3>Governance engine</h3>
+              <p>
+                The core product surface is the governance client: policy gates,
+                thresholds, machine-readable receipts, audit persistence, and
+                contest workflows.
+              </p>
+            </article>
+            <article class="build-card">
+              <h3>Buyer demo surfaces</h3>
+              <p>
+                The repository ships a FastAPI demo, a terminal-first CLI,
+                LangChain integration points, and an MCP sidecar for governed
+                agent actions.
+              </p>
+            </article>
+            <article class="build-card">
+              <h3>Research proof layer</h3>
+              <p>
+                The surrounding causal pipeline produces treatment-effect outputs,
+                overlap checks, fairness audits, governance gates, and reports that
+                prove the control layer is grounded in real signals.
+              </p>
+            </article>
+            <article class="build-card">
+              <h3>Static site for GitHub Pages</h3>
+              <p>
+                This site is plain HTML, CSS, and JavaScript in a separate folder,
+                so it stays easy to deploy, review, and keep isolated from the
+                source tree.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          cgmm3-govern positions governance as pre-release control: not post-hoc
+          explanation, but a stable layer for gating, receipts, auditability, and
+          review.
+        </p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
